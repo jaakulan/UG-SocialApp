@@ -1,0 +1,10 @@
+{
+    "db-connection-string": "database-1.ckxratlst6gb.us-east-2.rds.amazonaws.com",
+    "db-username": "admin",
+    "db-password": "unitinggamers",
+    "db-name": "UG",
+    "x-rapidapi-host-apex": "apex-legends.p.rapidapi.com",
+    "x-rapidapi-host-fortnite": "fortnite-api.p.rapidapi.com",
+    "x-rapidapi-key": "02d2016439msh72656aec810609dp19cf8djsn1a9fc0562f33"
+
+}

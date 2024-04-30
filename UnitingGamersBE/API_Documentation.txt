@@ -1,0 +1,253 @@
+API Documentation
+
+
+Profile Image Endpoint:
+/api/images/:username/profile-image
+
+GET: Checks if the user has a profile image stored, sends the file as a download if it does, sends a 404 error if the image doesn’t exist.
+
+POST: The Request sends a file to be the profile image of the user. If the file is not a png or jpg then it returns a 422 Error. Otherwise it stores the image and returns a 200 status code.
+
+DELETE: Checks if the user has a profile image stored, if it does not exist it returns a 404 error, otherwise it sends a 200 status code and deletes the image.
+
+
+Background Image Endpoint:
+Can be used without setting up a DB
+/api/images/:username/background-image
+
+GET: Checks if the user has a background image stored, sends the file as a download if it does, sends a 404 error if the image doesn’t exist.
+
+POST: The Request sends a file to be the background image of the user. If the file is not a png or jpg then it returns a 422 Error. Otherwise it stores the image and returns a 200 status code.
+
+DELETE: Checks if the user has a background image stored, if it does not exist it returns a 404 error, otherwise it sends a 200 status code and deletes the image.
+
+Connections API:
+Endpoint: https://unitinggamers.azurewebsites.net/api/connections/connections
+HTTP Method: GET
+Purpose: Gets all connections. In other words, it returns an object containing social media name and username 
+for that connection as well as the corresponding email of the user.
+Files Used: None
+
+Endpoint: https://unitinggamers.azurewebsites.net/api/connections/connections/:email
+HTTP Method: GET
+Purpose: Gets all connections from the user with email :email. In other words, it returns an object 
+containing social media name and username for each connection that the user has linked to their account.
+Files Used: UnitingGamersFE/app/friends/FriendsBody.js
+
+Endpoint: https://unitinggamers.azurewebsites.net/api/connections/add-connection/:socialMedia/:email/:username
+HTTP Method: POST
+Purpose: Upload a new connection to a user's profile. The social media is indicated by :socialMedia, 
+the email of the user's account for which this connection will be added to is indicated by :email and 
+the username of the user on that socialMedia is indicated by :username.
+Files Used: None
+
+Endpoint: https://unitinggamers.azurewebsites.net/api/connections/update-connection/:socialMedia/:email/:username
+HTTP Method: PUT
+Purpose: Modify an existing user's connection. The modified social media is indicated by :socialMedia, 
+the email of the user's account for which this connection will be modified to is indicated by :email and 
+the modified username of the user on that socialMedia is indicated by :username.
+Files Used: None
+
+Endpoint: https://unitinggamers.azurewebsites.net/api/connections/delete-connection/:socialMedia/:email/:username
+HTTP Method: DELETE
+Purpose: Delete a user's connection. The social media is indicated by :socialMedia, 
+the email of the user's account for which this connection will be deleted is indicated by :email and 
+the username of the user on that socialMedia is indicated by :username.
+Files Used: None
+
+Friends API:
+Endpoint: https://unitinggamers.azurewebsites.net/api/friends/allFriends
+HTTP Method: GET
+Purpose: Gets all friend pairs. In other words, it returns all UG email pairs, where each pair represents
+mutual friends.
+Files Used: None
+
+Endpoint: https://unitinggamersapi.azurewebsites.net/api/friends/friend/:friendOne
+HTTP Method: GET
+Purpose: Gets all emails of users that are friends with the user with email :friendOne. In other words, it returns 
+an object containing the user's friends' emails.
+Files Used: UnitingGamersFE/app/friends/FriendsBody.js
+
+Endpoint: https://unitinggamersapi.azurewebsites.net/api/friends/delete-friend/:friendOne/:friendTwo
+HTTP Method: DELETE
+Purpose: Delete a friend pair. The first friend is indicated by the email :friendOne, 
+the second friend is indicated by the email :friendTwo. Note that the order does not matter.
+Files Used: None
+
+Users API:
+Endpoint: https://unitinggamers.azurewebsites.net/api/user/username/:email
+HTTP Method: GET
+Purpose: Get the UG username of the user with email :email.
+Files Used: UnitingGamersFE/app/friends/FriendsBody.js
+
+Endpoint: https://unitinggamers.azurewebsites.net/api/user/name/:email
+HTTP Method: GET
+Purpose: Get the UG name of the user with email :email.
+Files Used: UnitingGamersFE/app/friends/FriendsBody.js
+
+Descriptions Endpoint:
+
+'/api/descriptions/:email' 
+HTTP Method: GET 
+Enter email of user in ‘:email’ spot, to receive description
+
+	'/update-description'
+HTTP Method: PUT
+Example: (serverURL)/api/descriptions/update-description?email=g@g.com&description=hi
+Query email and new descriptions as a string after update-description as such in the example
+
+
+'/add-description'
+HTTP Method: POST
+Example: (serverURL)/api/descriptions/add-description?email=f@g.com&description=hi
+Query a new user’s email and new description into the database
+
+	'/delete/:email'
+HTTP Method: delete
+Delete email of user in ‘:email’ spot, to delete email and description
+
+
+
+
+Authentican API:
+URL: https://unitinggamers.azurewebsites.net/api/auth/login
+HTTP Method: POST
+Purpose: Checks to see if this user exists. If so, return success on status 200 and generate a JWT token
+
+URL: https://unitinggamers.azurewebsites.net/api/auth/signup
+HTTP Method: POST
+Purpose: Adds a new user to the USER table
+
+
+
+
+Descrption API:
+URL: https://unitinggamers.azurewebsites.net/api/descriptions/allDescriptions
+HTTP Method: GET
+Purpose: Get all descrptions
+
+URL: https://unitinggamers.azurewebsites.net/api/descriptions/description/:email
+HTTP Method: GET
+Purpose: Get all descrptions for :email
+
+URL: https://unitinggamers.azurewebsites.net/api/descriptions/update-description
+HTTP Method: PUT
+Purpose: Update descrption for email in query string
+
+URL: https://unitinggamers.azurewebsites.net/api/descriptions/add-description
+HTTP Method: POST
+Purpose: Add description for email in query string
+
+URL: https://unitinggamers.azurewebsites.net/api/descriptions/delete/:email
+HTTP Method: DELETE
+Purpose: Delete description for :email
+
+
+
+
+Location API:
+Endpoint: https://unitinggamers.azurewebsites.net/api/locaion/all
+HTTP Method: GET
+Purpose: Gets all locations that users have.
+
+Endpoint: https://unitinggamers.azurewebsites.net/api/locaion/:id
+HTTP Method: GET
+Purpose: Gets the location associate with user with email 
+
+Endpoint: https://unitinggamers.azurewebsites.net/api/location/addLocation
+HTTP Method: POST
+Purpose: Add location for the user. Provide the email and location in the body of the request
+
+Endpoint: https://unitinggamers.azurewebsites.net/api/location/updateLocation
+HTTP Method: PUT
+Purpose: Modify an existing user's location. Provide the email of the user and the new location you want the user to have.
+
+Endpoint: https://unitinggamers.azurewebsites.net/api/location/removeLocation/:id
+HTTP Method: DELETE
+Purpose: Delete the location associtated with the user with the specified email.
+
+
+
+Gamestats API:
+Endpoint: https://unitinggamers.azurewebsites.net/api/game-stats/apex/:id/:platform
+HTTP Method: GET
+Purpose: Get game stats for the apex game. Will return the players level, legend, and rank given the username and platform which they play on
+
+Endpoint: https://unitinggamers.azurewebsites.net/api/game-stats/fortnite/:id
+HTTP Method: GET
+Purpose: Gets fortnite game-stats. Will return the players wins, kdr, and kills given their fortnite username.
+
+Endpoint: https://unitinggamers.azurewebsites.net/api/game-stats/overwatch/:id/:platform
+HTTP Method: GET
+Purpose: Gets overwatch game-stats. Will return level, hero, and wins given the blizzard username and id as well as platform
+
+
+
+GameCard API:
+Endpoint: https://unitinggamers.azurewebsites.net/api/game-card/games
+HTTP Method: GET
+Purpose: Gets all games that we can support gamecards for. Currently we support 3.
+
+Endpoint: https://unitinggamers.azurewebsites.net/api/game-card/create-gamecard
+HTTP Method: POST
+Purpose: Adds a gamecard to the db. Requires game, gamertag, email, and platform.
+
+Endpoint: https://unitinggamers.azurewebsites.net/api/game-card/get-gamecards/:email
+HTTP Method: GET
+Purpose: Gets all gamecards associated with a users email.
+
+Endpoint: https://unitinggamers.azurewebsites.net/api/game-card/update-gamecard
+HTTP Method: PUT
+Purpose: Modify a gamecards gamertag and platform. Requires game, gamertag, email, and platform.
+
+Endpoint: https://unitinggamers.azurewebsites.net/api/game-card/delete-gamecard/:email/:game
+HTTP Method: DELETE
+Purpose: Delete a gamecard. Requires the email and game. 
+
+
+
+Location Api
+
+
+GET /api/location/:id
+
+Given a specific user, return their location. If the user is not found a 404 will be thrown.
+
+POST /api/location/addLocation
+
+Associate a user to a specific location. Specify the user's id and location in the body of the request. Any errors will throw a 400.
+
+PUT /api/location/updateLocation
+
+Update a user's location based on their id. Specify the user's id and location in the body of the request. If the user does not exist then a new location will not be attached to the user. Use POST requests for that behaviour. Any errors will throw a 400.
+
+DELETE /api/location/removeLocation/:id
+
+Given a user's id, delete the location associated with them. Specify the id you want to delete in the parameters. Any errors will throw a 400.
+
+
+
+
+
+
+
+Games API
+
+Each endpoint is prefixed with the route /api/games
+
+HTTP METHOD route
+Description
+
+GET /api/games/:id
+Get all games info of user with {id}
+POST /api/games/add-game/:id
+Add game info to user with {id}
+PUT /api/games/update-game/:id/:game
+	Update {game} info of user with {id}
+DELETE /api/games/delete-game/:id/:game
+Delete {game} info of user with {id}
+
+
+
+
+
